@@ -1,0 +1,37 @@
+
+
+{% block body %}
+
+
+<div >
+
+    {% block title %}Plat du jour{% endblock %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Calories</th>
+                <th scope="col">Allergènes</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for dish in dishes %}
+            <tr>
+                <td>  <img class="image_plat" src="{{dish.Image}}" height="36"/></td>
+                <td> {{dish.Name}}</td>
+                <td> {{dish.Calories}}</td>
+                <td>
+                {% for allerg in dish.allergen %}
+                    {{allerg.name}}
+                {% endfor %}
+                </td>
+            
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+           
+{% endblock %}

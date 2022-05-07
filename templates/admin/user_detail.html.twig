@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail utilisateur{% endblock %}
+
+{% block body %}
+
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nom d'utilisateur </th>
+                <th scope="col">Email </th>
+                <th scope="col">Prénom </th>
+                <th scope="col">Nom </th>
+                <th scope="col">Job </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>  {{ user.username }}</td>
+                <td>  {{ user.Email }} </td>
+                <td>  {{ user.FirstName }} </td>
+                <td>{{ user.Lastname }}</td>
+                <td>{{ user.JobTitle }}</td>
+                <td>  <a href="{{ path('modify_user', {'id': user.id}) }}"><button type="button" class="btn btn-primary">Modifier</button></a> </td>
+                <td><a href="{{ path('delete_user', {'id': user.id}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>                </td>
+            </tr>
+        </tbody>
+
+        <tr>
+            <td>
+                <a href="{{ path('list_user') }}"> Revenir aux utilisateurs </a>
+            </td>
+        </tr>
+    </table>
+           
+{% endblock %}

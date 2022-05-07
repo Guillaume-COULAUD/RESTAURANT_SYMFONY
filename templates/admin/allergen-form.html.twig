@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+
+<h1>{{ form_title }}</h1>
+{{ form_start(form_allergen) }}
+    {{ form_row(form_allergen.name) }}
+    {{ form_row(form_allergen.Dish) }}
+    <a href="{{ path('list_user') }}">
+        <input id="valider" type="submit" value="Valider">
+    </a>
+{{ form_end(form_allergen) }}
+
+
+
+<style> 
+#valider{
+    background-color: blue;
+    color: white;
+}
+
+#btn_valider{
+    width: 100vw;
+    height: 5vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+form{
+    width: 100vw;
+    height: 80vh;
+}
+
+
+
+#dish_form{
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+label{
+    margin-right: 0.5rem;
+}
+
+</style>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des users{% endblock %}
+
+{% block body %}
+
+<style>
+.example-wrapper{
+    width: 100vw;
+    background-color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+}
+
+.tableau{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+tr{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
+td{
+    width: 25%;
+}
+
+</style>
+
+
+{% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+{% endfor %}
+
+<h1>Lise des utilisateurs</h1>
+<p><a href="{{ path('new_user') }}">Ajouter un utilisateur </a></p>
+ <table class="tableau">
+        <tr clas="ligne_tab">
+            <th>Nom d'utilisateur</th>
+            <th>Email</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+        </tr>
+        
+{% for user in users %}
+   
+        <tr class="ligne_tab">
+            <td>{{ user.username }}</td>
+            <td>{{ user.Email }}</td>
+            <td>{{ user.FirstName }}</td>
+            <td>{{ user.Lastname }}</td>
+            <td><a href="{{ path('user_detail', {'id': user.id}) }}">Voir plus de détails</a></td>
+        </tr>
+    
+{% endfor %}
+        
+    </table>
+{% endblock %}

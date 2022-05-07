@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des users{% endblock %}
+
+{% block body %}
+
+<style>
+.example-wrapper{
+    width: 100vw;
+    background-color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+}
+
+.tableau{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+tr{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
+td{
+    width: 25%;
+}
+
+</style>
+
+
+
+ <table class="tableau">
+   
+       
+   
+        <tr class="ligne_tab">
+            <td><a href="{{ path('new_dish') }}">Ajouter un plat</a></td>
+            <td><a href="{{ path('list_dish') }}">Afficher les plats</a></td>
+            <td><a href="{{ path('list_user') }}">Afficher les utilisateurs</a></td>
+            <td><a href="{{ path('list_allergen') }}">Afficher les allergenes</a></td>
+            <td><a href="{{ path('list_category') }}">Afficher les catégories</a></td>
+        </tr>
+
+        
+    </table>
+{% endblock %}

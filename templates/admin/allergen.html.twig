@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des allergenes{% endblock %}
+
+{% block body %}
+
+<style>
+.example-wrapper{
+    width: 100vw;
+    background-color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+}
+
+.tableau{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+tr{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
+td{
+    width: 25%;
+}
+
+</style>
+
+{% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+{% endfor %}
+
+<h1>Lise des allergenes</h1>
+<p><a href="{{ path('new_allergen') }}">Ajouter un allergene </a></p>
+ <table class="tableau">
+        <tr clas="ligne_tab">
+            <th>Nom</th>
+        </tr>
+        
+{% for allergen in allergens %}
+   
+        <tr class="ligne_tab">
+            <td>{{ allergen.name }}</td>
+            <td><a href="{{ path('allergen_detail', {'id': allergen.id}) }}">Voir plus de détails</a></td>
+        </tr>
+    
+{% endfor %}
+        
+    </table>
+{% endblock %}

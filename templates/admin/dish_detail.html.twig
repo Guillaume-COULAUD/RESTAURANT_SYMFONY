@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail plat{% endblock %}
+
+{% block body %}
+
+
+<table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image </th>
+                <th scope="col">Nom </th>
+                <th scope="col">Prix </th>
+                <th scope="col">Calories </th>
+                <th scope="col">Allergenes </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>   <img height="36px" src="{{dish.Image}}"/></td>
+                <td>
+                    {{dish.Name}}
+                </td>
+                <td>
+                    {{dish.Price}}
+                </td>
+                <td>
+                    {{dish.Calories}}
+                </td>
+                <td>
+                    {% for allerg in dish.allergen %}
+                        {{allerg.name}}
+                    {% endfor %}
+                </td>
+                <td>  <a href="{{ path('modify_dish', {'id': dish.id}) }}"><button type="button" class="btn btn-primary">Modifier</button></a> </td>
+                <td><a href="{{ path('delete_dish', {'id': dish.id}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>                </td>
+            </tr>
+        </tbody>
+
+        <tr>
+            <td>
+                <a href="{{ path('list_dish') }}"> Revenir aux plats </a>
+            </td>
+        </tr>
+    </table>
+
+ 
+{% endblock %}

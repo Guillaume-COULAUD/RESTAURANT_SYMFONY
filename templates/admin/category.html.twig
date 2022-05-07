@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des categories{% endblock %}
+
+{% block body %}
+
+<style>
+.example-wrapper{
+    width: 100vw;
+    background-color: #C0C0C0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+}
+
+.tableau{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2vh;
+}
+
+tr{
+    width: 100vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1vh;
+}
+td{
+    width: 25%;
+}
+
+.image{
+    height: 5vh;
+}
+
+.image_plat{
+    height: 5vh;
+}
+</style>
+
+{% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+{% endfor %}
+
+<h1>Lise des catégories</h1>
+<p><a href="{{ path('new_category') }}">Ajouter une nouvelle categorie</a></p>
+ <table class="tableau">
+        <tr clas="ligne_tab">
+            <th>Image</th>
+            <th>Nom</th>
+        </tr>
+        
+{% for category in categories %}
+   
+        <tr class="ligne_tab">
+            <td class="image">
+                <img class="image_plat" src="{{category.Image}}"/>
+            </td>
+            <td>{{ category.name }}</td>
+            <td><a href="{{ path('category_detail', {'id': category.id}) }}">Voir plus de détails</a></td>
+        </tr>
+    
+{% endfor %}
+        
+    </table>
+{% endblock %}
